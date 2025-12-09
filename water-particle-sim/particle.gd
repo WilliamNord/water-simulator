@@ -6,7 +6,7 @@ extends RigidBody2D
 var mouse_repell_radius = 300.0
 var mouse_repell_strength = 0.4
 
-@export var radius = 8
+@export var radius = 10
 
 # Farger for ulike hastigheter
 var color  = Color("#14D2FF")
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		if skip:
 			return
 		var mouse_pos = get_global_mouse_position()
-		draw_circle(mouse_pos, mouse_repell_radius, color) #funker ikke :(
+		#draw_circle(mouse_pos, mouse_repell_radius, color) #funker ikke :(
 		for particle in particles:
 			var to_mouse = particle.global_position - mouse_pos
 			var distance = to_mouse.length()
