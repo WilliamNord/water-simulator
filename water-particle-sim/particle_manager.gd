@@ -8,8 +8,8 @@ extends Node2D
 var particles: Array = []
 
 func _ready():
-	# Samle alle partikler ved oppstart
 	await get_tree().process_frame
+	# Samle alle partikler ved oppstart
 	particles = get_tree().get_nodes_in_group("particles")
 
 func register_particle(particle):
@@ -46,7 +46,7 @@ func _physics_process(delta):
 			var particle_b = particles[j]
 			if not is_instance_valid(particle_b):
 				continue
-				
+			
 			#regner distanse og retning mellom partikler
 			var to_other = particle_b.global_position - particle_a.global_position
 			var distance = to_other.length()
