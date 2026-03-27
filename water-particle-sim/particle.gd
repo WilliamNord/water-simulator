@@ -1,13 +1,15 @@
 extends RigidBody2D
 
-@export var radius = 12
+@export var radius = 15
 
 # Farger for ulike hastigheter
 var color = Color("#14D2FF")
 @export var slow_color: Color = Color("#0286fa")
 @export var mid_color: Color = Color("#FFD166") 
 @export var fast_color: Color = Color("#FF7B5A")
-@export var max_speed: float = 2000.0
+@export var max_speed: float = 1500.0
+@export var velocity_mod: float = 0.99
+
 
 
 func _draw():
@@ -17,7 +19,7 @@ func _ready():
 	add_to_group("particles")
 
 func _physics_process(delta):
-	self.linear_velocity *= 0.95
+	self.linear_velocity *= velocity_mod
 	
 	var pos = global_position
 	var velocity = linear_velocity

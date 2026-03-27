@@ -1,61 +1,94 @@
 extends Node2D
 
-@export var repell_radius: float = 80.0
-@export var repell_strength: float = 50.0
+@export var repell_radius: float = 50.0
+@export var repell_strength: float = 600.0
 @export var mouse_repell_radius: float = 300.0
 @export var mouse_repell_strength: float = 100.0
 
 var particles: Array = []
 
+# Grid
+var grid := {}
+var cell_size: float
+
 func _ready():
 	await get_tree().process_frame
-	# Samle alle partikler ved oppstart
 	particles = get_tree().get_nodes_in_group("particles")
+	
+	# Viktig: cell size bør være lik eller større enn radius
+	cell_size = repell_radius
 
-func register_particle(particle):
-	if not particles.has(particle):
-		particles.append(particle)
 
-#func unregister_particle(particle):
-	#particles.erase(particle)
+func get_cell(pos: Vector2) -> Vector2i:
+	return Vector2i(
+		int(pos.x / cell_size),
+		int(pos.y / cell_size)
+	)
+
 
 func _physics_process(delta):
-	# Håndterer musinteraksjon
+	var radius_sq = repell_radius * repell_radius
+	
+	particles = particles.filter(func(p): return is_instance_valid(p))
+	
+	grid.clear()
+	
+	for particle in particles:
+		var cell = get_cell(particle.global_position)
+		
+		if not grid.has(cell):
+			grid[cell] = []
+			
+		grid[cell].append(particle)
+	
+	# input fra mus
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = get_global_mouse_position()
+		var mouse_radius_sq = mouse_repell_radius * mouse_repell_radius
+		
 		for particle in particles:
-			if not is_instance_valid(particle):
-				continue
-				
 			var to_mouse = particle.global_position - mouse_pos
-			var distance = to_mouse.length()
+			var dist_sq = to_mouse.length_squared()
 			
-			if distance < mouse_repell_radius and distance > 0:
-				var direction = to_mouse.normalized()
+			if dist_sq < mouse_radius_sq and dist_sq > 0:
+				var distance = sqrt(dist_sq)
+				var direction = to_mouse / distance
 				var force = direction * (mouse_repell_radius - distance) * mouse_repell_strength
+				
 				particle.apply_central_force(force)
 	
-	# Beregn alle partikkel-partikkel interaksjoner
-	for i in range(particles.size()):
-		var particle_a = particles[i]
-		if not is_instance_valid(particle_a):
-			continue
-			
-		# Sjekk bare partikler som ikke er segselv
-		for j in range(i + 1, particles.size()):
-			var particle_b = particles[j]
-			if not is_instance_valid(particle_b):
-				continue
-			
-			#regner distanse og retning mellom partikler
-			var to_other = particle_b.global_position - particle_a.global_position
-			var distance = to_other.length()
-			
-			#sjekker om et partikkel er nerme nokk til å dyttes vekk
-			if distance > 0 and distance < repell_radius:
-				var direction = to_other.normalized()
-				var force_magnitude = (repell_radius - distance) * repell_strength
+	
+	for cell in grid.keys():
+		
+		var cell_particles = grid[cell]
+		
+		# Finn nabo-celler
+		var neighbors := []
+		
+		for x in range(-1, 2):
+			for y in range(-1, 2):
+				var neighbor_cell = cell + Vector2i(x, y)
 				
-				#Påfører samme kraft på begge partiklere i motsatt rettning. 
-				particle_a.apply_central_force(-direction * force_magnitude)
-				particle_b.apply_central_force(direction * force_magnitude)
+				if grid.has(neighbor_cell):
+					neighbors += grid[neighbor_cell]
+		
+		
+		# Sjekk interaksjoner
+		for particle_a in cell_particles:
+			for particle_b in neighbors:
+				
+				if particle_a == particle_b:
+					continue
+				
+				var to_other = particle_b.global_position - particle_a.global_position
+				var dist_sq = to_other.length_squared()
+				
+				if dist_sq > 0 and dist_sq < radius_sq:
+					var distance = sqrt(dist_sq)
+					var direction = to_other / distance
+					var force_mag = (repell_radius - distance) * repell_strength
+					
+					var force = direction * force_mag
+					
+					particle_a.apply_central_force(-force)
+					particle_b.apply_central_force(force)

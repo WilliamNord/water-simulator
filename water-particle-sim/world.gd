@@ -1,11 +1,10 @@
 extends Node2D
 
 const PARTICLE_SCENE = preload("res://particle.tscn")
-@export var num_particles: int = 200
+@export var num_particles: int = 600
 var screen_height = 1080 / 2
 var screen_width = 1920 / 2
 @export var spawn_area: Rect2 = Rect2(Vector2(0, 0), Vector2(screen_width, screen_height))
-
 
 func _ready():
 	DisplayServer.window_set_size(Vector2i(screen_width, screen_height))
