@@ -6,13 +6,15 @@ var screen_height = 1080 / 2
 var screen_width = 1920 / 2
 @export var spawn_area: Rect2 = Rect2(Vector2(0, 0), Vector2(screen_width, screen_height))
 
+var manager
+
 func _ready():
 	DisplayServer.window_set_size(Vector2i(screen_width, screen_height))
 	#Engine.physics_ticks_per_second = 100
 	#Engine.time_scale = 1.0
 	
 	# Lag particle manager først
-	var manager = Node2D.new()
+	manager = Node2D.new()
 	manager.set_script(preload("res://particle_manager.gd"))
 	add_child(manager)
 	
@@ -24,3 +26,7 @@ func _ready():
 		)
 		p.global_position = rand_pos
 		add_child(p)
+		
+	# Koble UI til manager etter at partikler er spawnet
+	await get_tree().process_frame
+	$settings_ui.setup(manager)

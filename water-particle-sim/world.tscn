@@ -1,6 +1,89 @@
 [gd_scene format=3 uid="uid://cjk14ihlswsf2"]
 
 [ext_resource type="Script" uid="uid://cvg2ypo1gvxd2" path="res://world.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://bwcbs350oke0a" path="res://settings_ui.gd" id="2_fj7yv"]
 
 [node name="World" type="Node2D" unique_id=737754421]
 script = ExtResource("1_f3sb7")
+
+[node name="settings_ui" type="CanvasLayer" parent="." unique_id=497980331]
+script = ExtResource("2_fj7yv")
+
+[node name="Panel" type="Panel" parent="settings_ui" unique_id=1062517592]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_ui/Panel" unique_id=1830818447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="SettingsLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1504776613]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RepellStrengthLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1100626120]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Repell strength"
+
+[node name="RepellStrengthSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=1037848089]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+max_value = 2000.0
+step = 5.0
+page = 40.0
+
+[node name="RepellRadiusLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1937241851]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Repell radius"
+
+[node name="RepellRadiusSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=746557960]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+min_value = 1.0
+max_value = 300.0
+value = 1.0
+
+[node name="MouseStrengthLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1118295603]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Mouse strength"
+
+[node name="MouseStrengthSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=1672736762]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+max_value = 2000.0
+step = 5.0
+
+[node name="FrictionLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1447186780]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Friction"
+
+[node name="FrictionSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=20563206]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Button" type="Button" parent="settings_ui/Panel/VBoxContainer" unique_id=1526995655]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/RepellStrengthSlider" to="settings_ui" method="_on_repell_strength_changed"]
+[connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/RepellRadiusSlider" to="settings_ui" method="_on_repell_radius_changed"]
+[connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/MouseStrengthSlider" to="settings_ui" method="_on_mouse_strength_changed"]
+[connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/FrictionSlider" to="settings_ui" method="_on_friction_changed"]

@@ -8,7 +8,7 @@ var color = Color("#14D2FF")
 @export var mid_color: Color = Color("#FFD166") 
 @export var fast_color: Color = Color("#FF7B5A")
 @export var max_speed: float = 1500.0
-@export var velocity_mod: float = 0.99
+@export var velocity_mod: float = 0.97
 
 
 
