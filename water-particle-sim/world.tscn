@@ -10,7 +10,8 @@ script = ExtResource("1_f3sb7")
 script = ExtResource("2_fj7yv")
 
 [node name="Panel" type="Panel" parent="settings_ui" unique_id=1062517592]
-custom_minimum_size = Vector2(400, 0)
+clip_contents = true
+custom_minimum_size = Vector2(450, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
@@ -33,22 +34,41 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RepellStrengthLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1100626120]
+[node name="HBoxContainer" type="HBoxContainer" parent="settings_ui/Panel/VBoxContainer" unique_id=811822746]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="RepellStrengthLabel" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer" unique_id=1100626120]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Repell strength"
+
+[node name="RepellStrengthLabel value" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer" unique_id=1369583862]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "-0-"
 
 [node name="RepellStrengthSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=1037848089]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 max_value = 2000.0
 step = 5.0
-page = 40.0
 
-[node name="RepellRadiusLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1937241851]
+[node name="HBoxContainer4" type="HBoxContainer" parent="settings_ui/Panel/VBoxContainer" unique_id=2030766505]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="RepellRadiusLabel" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer4" unique_id=1937241851]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Repell radius"
+
+[node name="RepellRadiusLabel value" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer4" unique_id=807243409]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "-0-"
 
 [node name="RepellRadiusSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=746557960]
 custom_minimum_size = Vector2(0, 60)
@@ -57,27 +77,47 @@ min_value = 1.0
 max_value = 300.0
 value = 1.0
 
-[node name="MouseStrengthLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1118295603]
+[node name="HBoxContainer3" type="HBoxContainer" parent="settings_ui/Panel/VBoxContainer" unique_id=400296697]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="MouseStrengthLabel" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer3" unique_id=1118295603]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Mouse strength"
 
+[node name="MouseStrengthLabel value" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer3" unique_id=1341391236]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "-0-"
+
 [node name="MouseStrengthSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=1672736762]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-max_value = 2000.0
+max_value = 1000.0
 step = 5.0
 
-[node name="FrictionLabel" type="Label" parent="settings_ui/Panel/VBoxContainer" unique_id=1447186780]
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings_ui/Panel/VBoxContainer" unique_id=527620422]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="FrictionLabel" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer2" unique_id=1447186780]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Friction"
 
+[node name="FrictionLabel value" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer2" unique_id=1679388492]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "-0-"
+
 [node name="FrictionSlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=20563206]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+min_value = 0.5
 max_value = 1.0
-step = 0.001
+step = 0.01
+value = 1.0
 
 [node name="Button" type="Button" parent="settings_ui/Panel/VBoxContainer" unique_id=1526995655]
 custom_minimum_size = Vector2(0, 60)

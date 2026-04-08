@@ -42,7 +42,7 @@ func _physics_process(delta):
 		grid[cell].append(particle)
 	
 	# input fra mus
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and get_viewport().gui_get_hovered_control() == null:
 		var mouse_pos = get_global_mouse_position()
 		var mouse_radius_sq = mouse_repell_radius * mouse_repell_radius
 		
