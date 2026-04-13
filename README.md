@@ -2,22 +2,22 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![Language](https://img.shields.io/badge/Language-GDScript-orange)
 
-# Vannsimulatoren
+# Vannsimulator
 
-## Dette prosjektet er en partikkelbasert væskesimulering laget i Godot 4. Simulasjonen er inspirert av **SPH (Smoothed Particle Hydrodynamics)** og andre partikkelbaserte fysikksimulasjoner.
+## Dette prosjektet er en partikkelbasert væskesimulering laget i Godot 4.6. Simulasjonen er inspirert av _Sebastian Lague_ på youtube
 
 ## Hvordan fungerer det?
 
-Hundrevis av partikler **frastøter hverandre** når de kommer for nære, noe som skaper en væskelignende oppførsel. Partiklene reagerer på tyngdekraft, spretter av vegger og reagerer på musebevegelser. Fargen på hver partikkel indikerer hastigheten — fra 🔵 blå (sakte) til 🟡 gul til 🔴 rød (rask).
+Hundrevis av partikler **frastøter hverandre** når de kommer for nære. Partiklene reagerer på tyngdekraft, spretter av vegger og reagerer på musebevegelser. Fargen på hver partikkel indikerer hastigheten — fra 🔵 blå (sakte) til 🟡 gul til 🔴 rød (rask).
 
 ## Kontroller
 
 - **Venstreklikk (hold):** Frastøt partikler fra musepekeren
-- **Tab:** Vis/skjul innstillingspanelet
+- **Tab:** Vis/skjul innstillingsmeny
 
-## Innstillingspanel
+## Innstillingsmeny
 
-Trykk **Tab** for å åpne panelet og justere simulasjonen i sanntid:
+Trykk **Tab** for å åpne menyen og justere simulasjonen i sanntid:
 
 - **Repel Strength** — Hvor hardt partikler skyver hverandre unna
 - **Repel Radius** — Hvor nære partikler må være for å interagere
@@ -26,7 +26,7 @@ Trykk **Tab** for å åpne panelet og justere simulasjonen i sanntid:
 - **Gravity** — Nedadgående tyngdekraft
 
 ## Teknologi
-- **Spillmotor:** Godot 4
+- **Spillmotor:** Godot 4.6
 - **Språk:** GDScript
 
 ## Struktur
@@ -51,7 +51,7 @@ https://github.com/WilliamNord/water-simulator/releases
 
 `.exe`-filer er for Windows og `.dmg`-filer er for Mac.
 
-Hvis du heller vil ha den nyeste versjonen og tilgang til alle filer, kan du følge denne guiden:
+Hvis du heller vil ha den nyeste versjonen og tilgang til alle filer og kode, kan du følge denne guiden:
 
 1. Last ned prosjektet lokalt
    - ```git clone <repo-url>```
