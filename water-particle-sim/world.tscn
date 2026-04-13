@@ -119,11 +119,34 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="settings_ui/Panel/VBoxContainer" unique_id=28894472]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="GravityLabel" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer5" unique_id=1083608061]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Gravity"
+
+[node name="GravityLabel value" type="Label" parent="settings_ui/Panel/VBoxContainer/HBoxContainer5" unique_id=925280446]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "-0-"
+
+[node name="GravitySlider" type="HSlider" parent="settings_ui/Panel/VBoxContainer" unique_id=1689545562]
+layout_mode = 2
+min_value = -1000.0
+max_value = 1000.0
+step = 10.0
+value = 100.0
+
 [node name="Button" type="Button" parent="settings_ui/Panel/VBoxContainer" unique_id=1526995655]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+text = "PAUSE"
 
 [connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/RepellStrengthSlider" to="settings_ui" method="_on_repell_strength_changed"]
 [connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/RepellRadiusSlider" to="settings_ui" method="_on_repell_radius_changed"]
 [connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/MouseStrengthSlider" to="settings_ui" method="_on_mouse_strength_changed"]
 [connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/FrictionSlider" to="settings_ui" method="_on_friction_changed"]
+[connection signal="value_changed" from="settings_ui/Panel/VBoxContainer/GravitySlider" to="settings_ui" method="_on_gravity_changed"]

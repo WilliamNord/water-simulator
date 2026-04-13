@@ -2,11 +2,5 @@
 
 [ext_resource type="Script" uid="uid://j01wmx7y18dd" path="res://particle.gd" id="1_kgu82"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kgu82"]
-friction = 0.0
-
-[node name="particle" type="RigidBody2D" unique_id=360394288 groups=["particles"]]
-mass = 1.5
-physics_material_override = SubResource("PhysicsMaterial_kgu82")
+[node name="particle" type="Node2D" unique_id=1666331548 groups=["particles"]]
 script = ExtResource("1_kgu82")
-radius = 7
