@@ -8,7 +8,7 @@
 
 ## Hvordan fungerer det?
 
-Hundrevis av partikler **frastøter hverandre** når de kommer for nære. Partiklene reagerer på tyngdekraft, spretter av vegger og reagerer på musebevegelser. Fargen på hver partikkel indikerer hastigheten — fra 🔵 blå (sakte) til 🟡 gul til 🔴 rød (rask).
+Hundrevis av partikler **frastøter hverandre** når de kommer for nære. Partiklene reagerer på tyngdekraft, spretter av vegger og reagerer på musebevegelser. Fargen på hver partikkel indikerer hastigheten — fra blå (sakte) til gul til rød (rask).
 
 ## Kontroller
 
